@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            display: inline-flex;
+        }
+        .container {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .winner {
+            width: 500px;
+            height: 500px;
+        }
+        p {
+
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p>Food</p>
+    <div class="foods">
+        <img src="http://planetoftheweb.com/i/food/mexican.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/korean.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/japanese.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/italian.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/indian.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/greek.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/german.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/chinese.jpg"/>
+        <img src="http://planetoftheweb.com/i/food/american.jpg"/>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+    var foodPics = ['http://planetoftheweb.com/i/food/mexican.jpg', 'http://planetoftheweb.com/i/food/korean.jpg', 'http://planetoftheweb.com/i/food/japanese.jpg', 'http://planetoftheweb.com/i/food/italian.jpg', 'http://planetoftheweb.com/i/food/indian.jpg', 'http://planetoftheweb.com/i/food/greek.jpg', 'http://planetoftheweb.com/i/food/german.jpg', 'http://planetoftheweb.com/i/food/chinese.jpg', 'http://planetoftheweb.com/i/food/american.jpg'];
+
+    var pictures = document.querySelectorAll('img');
+    var text = document.querySelector('p');
+
+    function clicked(e) {
+        e.target.style.display = 'none';
+        var onlyFood = null;
+        var foods = document.querySelector('.foods');
+        var pictures = document.querySelectorAll('img');
+        for(var i=0; i<pictures.length; i++) {
+            if(pictures[i].style.display !== 'none') {
+                if(onlyFood === null){
+                    onlyFood = pictures[i];
+                } else {
+                    onlyFood = null;
+                    break;
+                }
+            }
+        }
+        if(onlyFood !== null) {
+            onlyFood.className = 'winner';
+            text.innerText = 'Your food is cool!';
+        }
+    }
+
+    for(var i=0; i<pictures.length; i++){
+        pictures[i].addEventListener('click', clicked);
+    }
+
+</script>
+
+</body>
+</html>

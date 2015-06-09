@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Lost</title>
+    <style>
+        .container {
+            width: 50%;
+            height: 500px;
+            background-color: cornflowerblue;
+            background-size: contain;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h3 {
+
+        }
+        button {
+            height: 50px;
+            width: 100px;
+            margin: inherit;
+            align-self: center;
+        }
+        .clickMe {
+            background-color: aquamarine;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            border: 1px solid crimson;
+            border-radius: 25px;
+            margin: inherit;
+        }
+        .yeah {
+            margin-right: auto;
+            margin-left: auto;
+            background-color: aliceblue;
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="yeah">
+        <h1>asdf</h1>
+        <h3></h3>
+        <div class="clickMe">Click me!</div>
+        <button>Help me!</button>
+    </div>
+</div>
+
+
+<script>
+    var timerValue = document.querySelector('h1');
+    var myNode = document.querySelector('.clickMe');
+    var myMessage = document.querySelector('h3');
+    var cont = document.querySelector('.container');
+    var button = document.querySelector('button');
+    var startTime = 30;
+
+
+    function call() {
+        myNode.value = 'self destruct engaged';
+        timerId = setInterval(function () {
+            console.log(startTime--);
+            timerValue.innerText = startTime;
+            if (startTime < 25) {
+                myMessage.innerText = 'Watchout!';
+            }
+            if (startTime < 15) {
+                myMessage.innerText = 'It is going to get you!';
+            }
+            if (startTime < 5) {
+                myMessage.innerText = 'Here it comes!';
+            }
+            if (startTime === 0) {
+                cont.style.backgroundImage = 'url(http://www.followingthenerd.com/site/wp-content/uploads/zombies1.jpg)';
+            }
+            if (startTime <= 0) {
+                startTime = 0;
+            }
+        }, 1000);
+    }
+
+    function resetCall() {
+        startTime = 30;
+    }
+
+    myNode.addEventListener('click', call);
+    button.addEventListener('click', resetCall);
+
+
+
+</script>
+
+</body>
+</html>
