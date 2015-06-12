@@ -2,181 +2,112 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>wackAparrot</title>
     <style>
         body{
+            background-color: darkturquoise;
             margin: 0;
         }
         #container{
-            margin: 0;
-            background-color: sandybrown;
-            height: 800px;
-        }
-        .header{
-            width: 600px;
-            height: 100px;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
-            background-color: coral;
-            margin: auto;
-        }
-        .start{
-            width: 200px;
-            height: 75px;
-            background-color: darkred;
-            margin: auto;
-            border-radius: 25px;
-        }
-        h2{
-            float: left;
-            padding-right: 25px;
-        }
-        .content{
-            width: 600px;
-            height: 600px;
-            background-color: coral;
-            border-radius: 25px;
-            margin: 30px auto auto auto;
-        }
-        .moleOne{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleTwo{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleThree{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleFour{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleFive{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleSix{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleSeven{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleEight{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
-        .moleNine{
-            width: 150px;
-            height: 150px;
-            background-color: darkmagenta;
-            border-radius: 25px;
-            margin: auto auto auto auto;
-            background-size: contain;
-        }
+            width: 100%;
 
+        }
+        #game{
+            background-color: aliceblue;
+            width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #numHits{
+            float: left;
+        }
+        #numMisses{
+            float: right;
+        }
     </style>
 </head>
 <body>
-
-<div id="container">
-    <div class="header">
-        <h2>counter</h2>
-        <div class="start">START</div>
+    <div id="container">
+        <h3 id="numMisses">0</h3>
+        <h3 id="numHits">0</h3>
+        <div id="game"></div>
     </div>
-    <div class="content">
-        <div class="moleOne"></div>
-        <div class="moleTwo"></div>
-        <div class="moleThree"></div>
-        <div class="moleFour"></div>
-        <div class="moleFive"></div>
-        <div class="moleSix"></div>
-        <div class="moleSeven"></div>
-        <div class="moleEight"></div>
-        <div class="moleNine"></div>
-    </div>
-
-</div>
-
-
-
-
-
-
 <script>
-var moleOne = document.querySelector('.moleOne');
-var counterNode = document.querySelector('h2');
-var start = document.querySelector('.start');
-var counterNumber = 61;
-var moleArray = document.querySelectorAll('.content > div');
+var numMisses = 0;
+var numHits = 0;
+
+var hitAudio = document.createElement('audio');
+hitAudio.src = 'hit.wav';
+hitAudio.id = 'player';
+
+var missAudio = document.createElement('audio');
+missAudio.src = 'miss.wav';
+missAudio.id = 'player';
 
 
+function createMoles(x, y) {
+    var game = document.querySelector('#game');
+    for(var i=0; i < y; i++) {
+        var newRow = document.createElement('div');
+        newRow.className = 'game-row';
+        for(var j=0; j < x; j++) {
+            var newMole = document.createElement('img');
+            newMole.className = 'mole';
+            newMole.style.opacity = '0.3';
+            newMole.src = 'parrot.png';
+            newMole.dataset.timerId = 'null';
+            newRow.appendChild(newMole);
+        }
+        game.appendChild(newRow);
+    }
+}
 
-var wackMole = (function() {
-    var DEFAULTS = {
-        say: 'hello',
-        action: 'jump'
-    }, counter = 0;
+function updateScores() {
+    document.querySelector('#numMisses').innerHTML = 'Misses: ' + numMisses;
+    document.querySelector('#numHits').innerHTML = 'Hits: ' + numHits;
+}
 
-    return {
-        counterFunc: function call() {
-            var timerId = setInterval(function () {
-                counterNumber--;
-                counterNode.innerHTML = counterNumber.toString();
-                console.log(counterNumber);
-                var moleNumber = Math.floor(Math.random()*moleArray.length);
-                    var moleInt = setTimeout(function () {
-                        if(counterNumber%2 === 0) {
-                            moleArray[moleNumber].style.backgroundImage = "url('parrot.png')";
-                        };
-                    }, 200);
+function onClick(e) {
+    e.target.style.opacity = '0.3';
+    if(e.target.dataset.timerId  !== 'null') {
+        document.body.appendChild(hitAudio);
+        hitAudio.play();
+        numHits++;
+        updateScores();
+        clearTimeout(e.target.dataset.timerId);
+        e.target.dataset.timerId = null;
+    }
+}
 
-            }, 1000);
+function randomMole() {
+    var moles = document.querySelectorAll('.mole');
+    var whichMole;
+    do {
+        whichMole = moles[Math.floor(Math.random() * moles.length)];
+    } while (whichMole.dataset.timerId !== 'null');
+    whichMole.style.opacity = '1';
+    whichMole.dataset.timerId = setTimeout(function() {
+        whichMole.style.opacity = '0.3';
+        document.body.appendChild(missAudio);
+        missAudio.play();
+        numMisses++;
+        updateScores();
+        whichMole.dataset.timerId = 'null';
+    }, 1000);
+    setTimeout(randomMole, Math.floor(Math.random() * 2000 + 500));
+}
 
-        },
+function onLoad() {
+    createMoles(3, 3);
 
-    };
-})();
+    var moles = document.querySelectorAll('.mole');
+    for(var i=0; i<moles.length; i++) {
+        moles[i].addEventListener('click', onClick);
+    }
+    setTimeout(randomMole, 2000);
+}
 
-
-start.addEventListener('click', wackMole.counterFunc);
-
+window.addEventListener('load', onLoad);
 
 
 </script>
