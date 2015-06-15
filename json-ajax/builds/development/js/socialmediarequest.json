@@ -1,0 +1,11 @@
+{ "socialmedia" : [
+  {
+    "name":"Facebook"
+  },
+  {
+    "name":"Twitter"
+  },
+  {
+    "name":"Amazon"
+  }
+]}
