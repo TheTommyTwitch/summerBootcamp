@@ -71,3 +71,15 @@ body {
   padding-bottom: .25em;
   margin: auto 0;
 }
+#flickr {
+  width: 50%;
+  background-color: aqua;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+#flickr img {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 10px;
+}

@@ -26,3 +26,14 @@
     } //ready
   }; //event
   socialmediarequest.send();
+
+  function jsonFlickrFeed(item) {
+    console.log(item.items[1].media.m);
+    for(var i = 0; item.items.length; i++) {
+      var flickr = document.querySelector('#flickr');
+      var img = document.createElement('img');
+      img.src = item.items[i].media.m;
+      flickr.appendChild(img);
+    }
+    
+  }
