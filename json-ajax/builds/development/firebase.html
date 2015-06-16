@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title></title>
+	<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+</head>
+
+<body>
+<div id="info"></div>
+<button id="newNode">Node</button>
+<script>
+var info = document.querySelector('#info');
+var newNode = document.querySelector('#newNode');
+var ref = new Firebase("https://popping-torch-8077.firebaseio.com/");
+ref.on('value', function(snapshot) {
+  var data = snapshot.val();
+  console.log(data);
+  for(var i in data){
+  	info.innerHTML = data.bio + " " + data.skill;
+  	console.log(data[i]);
+  }
+  
+});
+
+newNode.addEventListener('click', function() {
+  ref.set({
+    name: "Richard Tweed",
+    reknown: "Vietname Vet, Award Winning Architect",
+    shortname: "Richard_Tweed",
+    bio: "Art is Richard’s third career. He is a Vietnam veteran.",
+    skill: "This is very fast."
+  });
+});
+</script>
+</body>
+
+</html>
