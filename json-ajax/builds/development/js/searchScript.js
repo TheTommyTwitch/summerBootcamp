@@ -19,7 +19,7 @@ function onKeyUp() {
 
 function getData() {
     var request = new XMLHttpRequest();
-    request.open('GET', 'data.json');
+    request.open('GET', 'js/data.json');
     request.addEventListener('readystatechange', function () {
         if ((request.status === 200) && (request.readyState === 4)) {
             var data = JSON.parse(request.responseText);
