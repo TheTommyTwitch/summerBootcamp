@@ -1,0 +1,63 @@
+body {
+  background: #EEE8D6;
+  margin: 0;
+  padding: 0;
+}
+
+.artists {
+  display:block;
+  width: 80%;
+  max-width: 650px;
+  list-style: none;
+  margin:0 auto;
+  padding: 0;
+  font-family: 'Helvetica';
+}
+
+.artists h1,.artists h2 {
+  margin: 0;
+  padding: 0;
+  line-height: 100%;
+}
+
+.artists h1 {
+  color: #72A65C;
+  font-size: 1.6em;
+}
+
+.artists h2 {
+  color: #E15D5F;
+  font-size: 1.3em;
+}
+
+.artists p {
+  font-size: .9em;
+}
+
+.item:first-of-type  {
+  margin: 0;
+  margin-top: 40px;
+}
+
+.item {
+  margin: 20px 0;
+  overflow: auto;
+}
+.item img {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  border-radius: 10px;
+  width: 120px;
+}
+#formDiv {
+  background-color: grey;
+  display: block;
+  width: 200px;
+  float: right;
+  height: 200px;
+}
+#artistForm {
+  margin: 20px;
+}
+
