@@ -1,23 +1,23 @@
-var ref = new Firebase("https://popping-torch-8077.firebaseio.com");
+var ref = new Firebase("https://popping-torch-8077.firebaseio.com/");
 var outputNode = document.querySelector('#artists');
 var dataNode = document.querySelector('#addArtist');
 var outputHTML = '';
-var formNode = document.querySelector('#fornDiv');
+var formNode = document.querySelector('#formDiv');
 
 dataNode.addEventListener('click', function(e) {
-
+  e.preventDefault();
   if (e.target.id === 'addArtist') {
-    ref.push({
-      name: "Richard Tweed",
-      reknown: "Vietname Vet, Award Winning Architect",
-      shortname: "Richard_Tweed",
-      bio: "Art is Richard’s third career. He is a Vietnam veteran who proudly served his country for 15 years after the war. As an adult, Richard returned to college to pursue a degree in Architecture, and was a practicing and award-winning architect for another 30 years. His architectural designs awakened within him a deep longing for painting and drawing, and he began slowly by painting incredibly unique renditions of his successful architectural structures. Seeing peoples’ response to his paintings, brought an excitement that Richard had never known, and upon retiring, Richard enrolled in the Roux Academy of Art, Media, and Design to learn all he could about painting."
-    });
+    var myArtist = {};
+    myArtist.name = document.querySelector('#nameid').value;
+    myArtist.reknown = document.querySelector('#reknownid').value;
+    myArtist.shortname = document.querySelector('#shortnameid').value;
+    myArtist.bio = document.querySelector('#bioid').value;
+    ref.push(myArtist);
   }
 });
 
 outputNode.addEventListener('click', function(e) {
-    var deleteRef = new Firebase("https://popping-torch-8077.firebaseio.com" + e.target.id);
+    var deleteRef = new Firebase("https://popping-torch-8077.firebaseio.com/" + e.target.id);
     var onDeleteError = function(error) {
       if (error) {
         console.log('Synchronization failed');
@@ -42,7 +42,7 @@ ref.on('value', function(snapshot) {
     outputHTML += '<li class="item">';
     outputHTML += '<h1 class="name">' + name + ' <button class="deleteArtist" id="' + key + '">-</button></h1>';
     outputHTML += '<h2 class="reknown">' + reknown + '</h2>';
-    outputHTML += '<p class="bio"><img src="http://planetoftheweb.com/i/artists/' + shortname + '_tn.jpg" alt="' + name + ' photo">' + bio + '</p>';
+    outputHTML += '<p class="bio">' + bio + '</p>';
     outputHTML += '</li>';
   }
   outputHTML += '</ul>';

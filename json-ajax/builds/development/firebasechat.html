@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>Firebase Chat</title>
+	<style type="text/css">
+		#container{
+			width: 80%;
+			height: 450px;
+			margin: auto;
+			background-color: grey;
+		}
+		#left{
+			width: 45%;
+			height: 400px;
+			margin: 25px 10px;
+			background-color: red;
+			float: left;
+		}
+		#right{
+			width: 45%;
+			height: 400px;
+			margin: 25px 10px;
+			background-color: green;
+			float: right;
+		}
+		#form{
+			margin: 25px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="left">
+			<form id="form">
+				<input type="text" name="myMessage" id="myMessage" value="text">
+				<button id="chatButton">Chat</button>
+			</form>
+		</div>
+		<div id="right"></div>
+	</div>
+
+
+  <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+  <script>
+  	var ref = new Firebase("https://thomaschat.firebaseio.com/");
+  	var leftNode = document.querySelector('#left');
+  	var rightNode = document.querySelector('#right');
+
+
+  	leftNode.addEventListener('click', function(e) {
+	  	e.preventDefault();
+	  	if (e.target.id === 'chatButton') {
+	  		var textObj = {};
+	  		textObj.firstMessage = document.querySelector('#myMessage').value;
+	    	ref.push(textObj);
+    
+    	}
+	});
+
+	ref.on('value', function(snapshot) {
+	  	var data = snapshot.val();
+	  	for(var key in data){
+	  		output = data[key].firstMessage;
+	  		var textNode = document.createTextNode(output);
+	  		linebreak = document.createElement("br");
+	  		rightNode.appendChild(textNode);
+	  		rightNode.appendChild(linebreak);
+	  		document.querySelector('#myMessage').value = '';
+	  	}
+	});
+
+
+
+  </script>
+</body>
+</html>
