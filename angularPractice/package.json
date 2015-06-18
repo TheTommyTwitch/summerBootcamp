@@ -1,0 +1,17 @@
+{
+  "name": "angular",
+  "version": "0.0.1",
+  "description": "angular",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/planetoftheweb/json.git"
+  },
+  "author": "thomas",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-util": "^2.2.20",
+    "gulp-webserver": "^0.8.1",
+    "jshint-stylish": "^1.0.0"
+  }
+}
