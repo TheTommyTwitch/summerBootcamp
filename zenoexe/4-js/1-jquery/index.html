@@ -9,62 +9,110 @@
 
 	<script>
 	// 1
-	$(function() {
+	//$(function() {
 
+	//});
+
+
+	document.addEventListener('DOMContentLoaded' function(e){
+		//start playing here
 	});
 
 	// 2
-	$("#box");
+	//$("#box");
+
+	document.querySelector('#box');
 
 	// 3
-	$(".box");
+	//$(".box");
+
+	document.querySelector('.box');
 
 	// 4
-	$("div");
+	//$("div");
+
+	document.querySelector('div');
+	getElementsByTagName('div');
 
 	// 5
-	$(".box").get(0);
+	//$(".box").get(0);
+
+	document.querySelector('.box');
 
 	// 6
-	$(document).on('click', function(event) {
-		console.log(event);
-	});
+	//$(document).on('click', function(event) {
+	//	console.log(event);
+	//});
+
+	document.addEventListener('click', function(e){
+
+	})
 
 	// 7
-	$("#box").text("lorem");
+	//$("#box").text("lorem");
+
+	document.querySelector('#box').textContent = 'asasas';
 
 	// 8
-	$("#box").html("<p>lorem</p>");
+	//$("#box").html("<p>lorem</p>");
+
+	var p = document.createElement('p')
+	p.textContent = 'asdasd';
+	document.querySelector('#box').appendChild(p);
 
 	// 9
-	$("#box").append("<p>lorem</p>");
+	//$("#box").append("<p>lorem</p>");
+
+	var p = document.createElement('p')
+	p.textContent = 'asdasd';
+	document.querySelector('#box').appendChild(p);
 
 	// 10
-	$("#box").attr("width");
+	//$("#box").attr("width");
+
+	document.querySelector('.box').getAttribute('width');
 
 	// 11
-	$("#box").attr("width", "400");
+	//$("#box").attr("width", "400");
+
+	document.querySelector('#box').setAttribute('width', '400');
 
 	// 12
-	$("#box").removeAttr("width");
+	//$("#box").removeAttr("width");
+
+	document.querySelector('#box').removeAttribute('width');
 
 	// 13
-	$("#box").addClass("selected");
+	//$("#box").addClass("selected");
+
+	document.querySelector('#box').classList.add('asd');
 
 	// 14
-	$("#box").removeClass("selected");
+	//$("#box").removeClass("selected");
+
+	document.querySelector('#box').classList.remove('box');
+
 
 	// 15
-	$("#box").toggleClass("selected");
+	//$("#box").toggleClass("selected");
+
+	document.querySelector('#box').classList.toggle('box');
 
 	// 16
-	$("#box").hasClass("box");
+	//$("#box").hasClass("box");
+
+	document.querySelector('#box').classList.contains('box');
 
 	// 17
-	$("#box").css({
-		"background": "#F60",
-		"height": "300"
-	});
+	//$("#box").css({
+	//	"background": "#F60",
+	//	"height": "300"
+	//});
+
+	document.querySelector('#box').style.background = "#F60";
+	document.querySelector('#box').style.height = "300";
+
+
 	</script>
 </body>
 </html>
