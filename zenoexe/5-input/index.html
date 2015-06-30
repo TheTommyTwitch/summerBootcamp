@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+	<style type="text/css">
+	  input{
+	  	position: inline-block;
+	  }
+	  input:required:invalid, input:focus:invalid {
+	    background-color: crimson;
+	  }
+	  input:required:valid {
+	    background-color: lightgreen;
+	  }
+
+</style>
+	</style>
+</head>
+<body>
+	<form>
+		<label for="email">Email *</label>
+		<input name="email" type="email" placeholder="your@email.com" required>
+		<label for="name">Name</label>
+		<input name="name" type="text" placeholder="John Wayne" required>
+		<label for="age">Age</label>
+		<input name="age" type="number" placeholder="18" required>
+		<label for="color">Favorite Color</label>
+		<input name="color" type="color" placeholder="Blue" required>
+		<label for="zip">ZIP *</label>
+		<input pattern="[0-9]{5}"name="zip" type="text" placeholder="XXXXX" required >
+		<input type="submit">
+	</form>
+</body>
+</html>
