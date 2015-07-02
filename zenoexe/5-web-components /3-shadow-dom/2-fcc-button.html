@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 </head>
-<body>
+<template>
 	<style>
 		button {
 			position: absolute;
@@ -54,5 +54,30 @@
 	</style>
 
 	<button></button>
+
+</template>
+<body>
+	
+	<fresno-button></fresno-button>
+
+
+	<script>
+	var element = Object.create(HTMLElement.prototype);
+	element.createdCallback = function(){
+
+		var template = document.querySelector('template').content;
+		var shadowRoot = this.createShadowRoot();
+		var clone = template.cloneNode(true);
+		shadowRoot.appendChild(clone);
+
+	};
+
+	document.registerElement('fresno-button',{
+		prototype: element
+	});
+
+	
+
+	</script>
 </body>
 </html>
