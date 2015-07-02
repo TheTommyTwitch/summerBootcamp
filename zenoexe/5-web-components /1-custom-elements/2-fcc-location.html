@@ -12,7 +12,7 @@
 	
 	var element = Object.create(HTMLElement.prototype);
 
-	element.attachedCallback = fuction(){
+	element.attachedCallback = function() {
 		var latitude = this.getAttribute('latitude');
 		var longitude = this.getAttribute('longitude');
 		var zoom = this.getAttribute('zoom');
@@ -21,7 +21,7 @@
 	};
 
 	document.registerElement('fcc-location', {
-		prototype: element;
+		prototype: element
 	})
 
 </script>
