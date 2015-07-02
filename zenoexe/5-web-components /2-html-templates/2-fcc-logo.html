@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<template>
+		<a href="http://www.fresnocitycollege.edu/">
+			<img src="http://devfest.gdgfresno.com/img/partners/fcc.jpg" alt="Fresno City College">
+		</a>
+	</template>
+	<script>
+		var template = document.querySelector('template').content;
+		template.querySelector('a').src = 'http://www.fresnocitycollege.edu/';
+		template.querySelector('img').src = 'fcclogo.png';
+		
+		var clone = template.cloneNode(true);
+		document.body.appendChild(clone);
+	</script>
+</body>
+</html>

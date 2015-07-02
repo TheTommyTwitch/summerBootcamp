@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+	
+	<fcc-location latitude="34" longitude="-118" zoom="10"></fcc-location>
+
+
+<script>
+	
+	var element = Object.creat(HTMLElement.prototype);
+
+	element.attachedCallback = fuction(){
+		var latitude = this.getAttribute('latitude');
+		var longitude = this.getAttribute('longitude');
+		var zoom = this.getAttribute('zoom');
+
+		this.innerHTML = '<img src="https://maps.googleapis.com/maps/api/staticmap?center='+ latitude + ',' + longitude + '&amp;zoom='+ zoom +'&amp;size=700x700&amp;sensor=false">';
+	};
+
+	document.registerElement('fcc-location', {
+		prototype: element;
+	})
+
+</script>
+</body>
+</html>
