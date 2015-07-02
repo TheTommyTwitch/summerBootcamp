@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Cow(name, age, brothers, sisters, sad){
+			this.name = name;
+			this.age = age;
+			this.brothers = brothers;
+			this.sister = sisters;
+			this.sad = sad;
+		};
+
+
+		Cow.prototype.isSad = function(){
+			if (cow.sad) {
+			return 'Ohh :(';
+			}
+			else {
+			return 'Yay!';
+			}
+		};
+
+		var cow1 = new Cow("Thomas", 10, ["john"], null, true);
+		var cow2 = new Cow("Thomas", 10, ["john"], null, true);
+
+		
+		console.log(cow1);
+		console.log(cow2);
+	</script>
+	
+	
+	<script>
+	var cow = {};
+ 
+	cow.name = "Martha";
+	cow.age = 10;
+	cow.brothers = ["John", "Joanna", "qweqwe"];
+	cow.sisters = null;
+	cow.sad = true;
+ 
+	function isSad() {
+		if (cow.sad) {
+			return 'Ohh :(';
+		}
+		else {
+			return 'Yay!';
+		}
+	}
+ 
+	for (var i = 0; i < cow.brothers.length; i++) {
+		console.log(cow.brothers[i]);
+	}
+	</script>
+</body>
+</html>
