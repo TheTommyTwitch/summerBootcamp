@@ -3,19 +3,37 @@
 <head>
 	<meta charset="UTF-8">
 </head>
-<body>
 	<template>
-		<a href="http://www.fresnocitycollege.edu/">
-			<img src="http://devfest.gdgfresno.com/img/partners/fcc.jpg" alt="Fresno City College">
+		<a>
+			<img>
 		</a>
 	</template>
+<body>
+	<fcc-element logo="http://devfest.gdgfresno.com/img/partners/fcc.jpg" url="http://www.fresnocitycollege.edu/"></fcc-element>
+	<fcc-element logo="https://www.google.com/images/srpr/logo11w.png" url="https://www.google.com/"></fcc-element>
+	
 	<script>
-		var template = document.querySelector('template').content;
-		template.querySelector('a').src = 'http://www.fresnocitycollege.edu/';
-		template.querySelector('img').src = 'fcclogo.png';
+		var element = Object.create(HTMLElement.prototype);
+		element.attachedCallback = function() {
+			var logo = this.getAttribute('logo');
+			var url = this.getAttribute('url');
+			
+			var template = document.querySelector('template').content;
+			template.querySelector('a').href = url;
+			template.querySelector('img').src = logo;
+
+			var clone = template.cloneNode(true);
+			document.body.appendChild(clone);
+		};
+
+		document.registerElement('fcc-element', {
+		prototype: element
+		});
+
+
 		
-		var clone = template.cloneNode(true);
-		document.body.appendChild(clone);
+		
+		
 	</script>
 </body>
 </html>
