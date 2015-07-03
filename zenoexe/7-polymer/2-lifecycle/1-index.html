@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<plain-element blah="500"></plain-element>
+
+
+<script>
+	var element = Object.create(HTMLElement.prototype);
+
+	element.attachedCallback = function(){
+		console.log('attached');
+	};
+
+	element.detachedCallback = function(){
+		console.log('detached');
+	};
+
+	element.createdCallback = function(){
+		console.log('created');
+	};
+
+	element.attributeChangedCallback = function(attr, oldVal, newVal){
+		console.log('attr', attr);
+		console.log('oldVal', oldVal);
+		console.log('newVal', newVal);
+	};
+
+	document.registerElement('plain-element', {
+		prototype: element
+	});
+
+	var myElement = document.querySelector('plain-element');
+	document.body.appendChild(myElement)
+</script>
+</body>
+</html>

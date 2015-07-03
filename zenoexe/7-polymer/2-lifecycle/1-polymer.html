@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="import" href="..bower_components/polymer/polymer.html">
+</head>
+<body>
+	<my-element></my-element>
+<script>
+Polymer({
+	is: 'my-element'
+
+	attached: function(){
+		console.log('attached');
+	};
+	detached: function(){
+		console.log('detached');
+	};
+	created: function(){
+		console.log('created');
+	};
+});
+
+</script>
+</body>
+</html>

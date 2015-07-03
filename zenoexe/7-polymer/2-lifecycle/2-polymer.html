@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="import" href="../bower_components/polymer/polymer.html">
+</head>
+<body>
+	<my-element>asdf</my-element>
+<script>
+Polymer({
+	is: 'my-element',
+
+	attached: function(){
+		var self = this;
+		setInterval(function(){
+			self.style.visibility = self.style.visibility === 'hidden' ? 'visible' : 'hidden';
+		}, 200);
+	},
+	
+	detached: function(){
+		clearInterval(this.timer);
+	}
+});
+
+</script>
+</body>
+</html>

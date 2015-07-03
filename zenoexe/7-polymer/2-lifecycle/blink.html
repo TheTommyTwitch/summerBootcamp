@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<blink-element>asdasd</blink-element>
+</body>
+</html>
+
+<script>
+	var element = Object.create(HTMLElement.prototype);
+	
+	element.attachedCallback = function(){
+		var self = this;
+		setInterval(function(){
+			self.style.visibility = self.style.visibility === 'hidden' ? 'visible' : 'hidden';
+		}, 200);
+	};
+
+	element.detachedCallback = function(){
+		clearInterval(this.timer);
+	}
+
+	document.registerElement('blink-element', {prototype: element});
+
+
+	
+</script>
