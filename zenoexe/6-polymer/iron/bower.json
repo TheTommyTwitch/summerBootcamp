@@ -1,0 +1,19 @@
+{
+  "name": "iron",
+  "version": "0.0.0",
+  "homepage": "https://github.com/TheTommyTwitch/summerBootcamp",
+  "authors": [
+    "Thomas Asadurian <Tasadurian@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-collapse": "PolymerElements/iron-collapse#~1.0.2"
+  }
+}

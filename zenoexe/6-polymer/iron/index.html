@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="import" href="bower_components/iron-collapse/iron-collapse.html">
+</head>
+<body>
+
+	<a href="#one">What is the TEAS exam?</a>
+		<iron-collapse id="one">
+		<p>The Test of Essential Academic Skills (TEAS) was developed to measure basic essential skills in the academic content area domains of Reading, Mathematics, Science, and English and Language Usage. These entry level skills were deemed important for nursing program applicants by a nursing program curriculum expert. Students must earn an overall score of 62% or higher to submit an application to the Registered Nursing and LVN to RN Program. Students who earn an overall score below 62% may enroll into remediation workshops within the Health Sciences Division at FCC. Students may call the Health Sciences Division office at (559) 244-2604 and ask to speak to Stephanie Robinson for more information on the remediation workshops.</p>
+		</iron-collapse>
+	
+	<a href="#two">How much will the TEAS exam cost me?</a>
+
+	<iron-collapse id="two">
+		<p>The cost of the TEAS exam at Fresno City College is approximately $45.00.  Students will be asked to pay the cost of the exam at the time of testing by using a major credit card or debit card only.  The remediation workshops offered within the Health Sciences Division are free of charge.</p>
+	</iron-collapse>
+
+	<script>
+		var links = document.querySelectorAll('a');
+
+		for (var i = 0; i < links.length; i++) {
+			links[i].addEventListener('click', function(e) {
+				var collapse = document.querySelector(e.target.hash);
+				collapse.toggle();
+
+				e.preventDefault;
+			});
+		};
+	</script>
+
+	
+</body>
+</html>
