@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="element-diploma">
+<style>
+	#styling {
+		background-image: url("2-diploma-bg.jpg");
+		width: 500px;
+		height: 700px;
+		text-align: center;
+		padding: 200px 100px;
+		border: 10px solid brown;
+	}
+	p {
+		font-size: 2em;
+	}
+	strong{
+		font-size: 3em;
+	}
+	em {
+		font-size: 3em;
+	}
+</style>
+	<template>
+		<div id="styling">
+		<p><strong>{{school}}</strong><br> would like to recognize <br><em>{{name}}</em><br> for completing the <br><span>{{course}}</span></p>
+		</div>
+	</template>
+</dom-module>
+
+<script>
+    // element registration
+    Polymer({
+    	is: "element-diploma",
+
+    	properties: {
+      		school: String,
+      		name: String,
+      		course: String
+        },
+
+        // attached: function(){
+        // 	this.querySelector('strong').textContent = this.school;
+        // 	this.querySelector('em').textContent = this.name;
+        // 	this.querySelector('span').textContent = this.course;
+        // }
+    });
+  </script>
