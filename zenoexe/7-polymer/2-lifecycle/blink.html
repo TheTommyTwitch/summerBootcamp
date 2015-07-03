@@ -5,7 +5,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<blink-element interval="100">asdasd</blink-element>
+	<blink-element interval="1000">asdasd</blink-element>
 </body>
 </html>
 
@@ -13,21 +13,30 @@
 	var element = Object.create(HTMLElement.prototype);
 	
 	element.attachedCallback = function(){
+		this.blah();
+	};
+
+	element.attributeChangedCallback = function(attr, oldVal, newVal){
+		clearInterval(this.timer);
+		this.blah();
+	};
+
+	element.blah = function(){
 		var self = this;
 		var interval = self.getAttribute('interval');
 		
 		if(!interval){
 			interval = 200;
 		};
-		
-		setInterval(function(){
+
+		this.timer = setInterval(function(){
 			self.style.visibility = self.style.visibility === 'hidden' ? 'visible' : 'hidden';
 		}, interval);
 	};
 
 	element.detachedCallback = function(){
 		clearInterval(this.timer);
-	}
+	};
 
 	document.registerElement('blink-element', {prototype: element});
 

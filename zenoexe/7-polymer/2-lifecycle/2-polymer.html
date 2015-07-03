@@ -6,20 +6,37 @@
 	<link rel="import" href="../bower_components/polymer/polymer.html">
 </head>
 <body>
-	<my-element>asdf</my-element>
+	<my-element interval="1000">asdf</my-element>
 <script>
 Polymer({
 	is: 'my-element',
 
+	properties: {
+		interval: {
+			type: Number,
+			value: 200
+		}
+	},
+
 	attached: function(){
-		var self = this;
-		setInterval(function(){
-			self.style.visibility = self.style.visibility === 'hidden' ? 'visible' : 'hidden';
-		}, 200);
+		this.blah();
+	},
+
+	attributeChanged: function(attr, oldVal, newVal){
+		clearInterval(this.timer);
+		this.blah();
 	},
 	
 	detached: function(){
 		clearInterval(this.timer);
+	},
+
+	blah: function(){
+		var self = this;
+
+		setInterval(function(){
+			self.style.visibility = self.style.visibility === 'hidden' ? 'visible' : 'hidden';
+		}, this.interval);
 	}
 });
 
