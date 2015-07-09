@@ -1,24 +1,34 @@
 package main
 
 import (
-  "strings"
+  //"strings"
   "fmt"
+  "bufio"
+  "os"
+  "log"
+  "io"
 )
 
-func Wordcount(str string) map[string]int {
-  words := strings.Fields(str)
-  var thisMap = make(map[string]int)
+func Wordcount(scan io.Reader) int {
+  word := os.Args[1]
   var count int = 0
-  for i := 0; i < len(words); i++ {
-    count++
-    thisMap[words[i]] = count
+  scanner := bufio.NewScanner(scan)
+  scanner.Split(bufio.ScanWords)
+  for scanner.Scan() {
+    line := scanner.Text()
+    if line == word {
+      count++
+    }
   }
-  return thisMap
+  return count
 }
 
 func main()  {
-  str := "Whatever I want to hear in my head"
-  result := Wordcount(str)
-  fmt.Println(result)
+  srcFile, err := os.Open("book.txt")
+	if err != nil {
+		log.Fatalln(err)
+	}
+  defer srcFile.Close()
 
+  fmt.Println(Wordcount(srcFile))
 }
